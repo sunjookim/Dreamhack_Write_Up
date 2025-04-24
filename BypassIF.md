@@ -45,3 +45,7 @@ def flag():
     else: 
         return render_template('flag.html')
 ```
+
+버프슈트로 보면 submit 버튼 클릭 시 /flag로 POST 요청을 보내는 것을 알 수 있다.
+요청에 cmd 파라미터 값을 추가하면 될 것 같다.
+
