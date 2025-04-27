@@ -33,7 +33,7 @@ def flag():
         if cmd != '' or key == KEY:
             if not filter_cmd(cmd):
                 try:
-                    output = subprocess.check_output(['/bin/sh', '-c', cmd], timeout=5)
+                    output = subprocess.check_output(['/bin/sh', '-c', cmd], timeout=5) # cmd 명령어를 /bin/sh 셸을 통해 실행하고, 결과를 output 변수에 저장함
                     return render_template('flag.html', txt=output.decode('utf-8'))
                 except subprocess.TimeoutExpired:
                     return render_template('flag.html', txt=f'Timeout! Your key: {KEY}')
