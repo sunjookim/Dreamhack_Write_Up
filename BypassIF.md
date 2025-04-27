@@ -30,7 +30,7 @@ def flag():
             return render_template('flag.html', txt=FLAG)
         elif cmd == '' and key == guest_key:
             return render_template('guest.html', txt=f"guest key: {guest_key}")
-        if cmd != '' or key == KEY:
+        if cmd != '' or key == KEY: # 취약점 발생 부분
             if not filter_cmd(cmd):
                 try:
                     output = subprocess.check_output(['/bin/sh', '-c', cmd], timeout=5) # cmd 명령어를 /bin/sh 셸을 통해 실행하고, 결과를 output 변수에 저장함
@@ -47,5 +47,11 @@ def flag():
 ```
 
 버프슈트로 보면 submit 버튼 클릭 시 /flag로 POST 요청을 보내는 것을 알 수 있다.
-요청에 cmd 파라미터 값을 추가하면 될 것 같다.
+
+그리고 if cmd != '' or key == KEY 조건을 이용해서, KEY 값을 알아내지 않더라도 cmd_input 파라미터 전달만을 통해 cmd를 실행시킬 수 있다.
+
+버프슈트를 통해 key=asdf&cmd_input=ls를 전송해보면 ls 결과가 나타난다. 
+
+
+flag.txt를 열어야 하는데, filter_cmd 함수 때문에 flag 문자열이 차단된다.
 
