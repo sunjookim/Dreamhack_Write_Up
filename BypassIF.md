@@ -65,5 +65,5 @@ flag.txt를 열어야 하는데, filter_cmd 함수 때문에 flag 문자열이 �
 <hr/>
 
 5초가 지나면 타임아웃 되므로, sleep 6을 해서 KEY 값을 얻었다.
-KEY 값은 FLAG 값을 md5 해시한 값이므로, 복호화하면 FLAG가 나온다.
+KEY 값을 입력하면 플래그가 나온다.
 
