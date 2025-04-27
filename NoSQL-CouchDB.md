@@ -31,8 +31,9 @@ app.post('/auth', function(req, res) {
             res.send('error');
             return;
         }
-        if (result.upw === req.body.upw) {
-            res.send(`FLAG: ${process.env.FLAG}`); // 비밀번호가 일치하면 FLAG 호출. 비밀번호를 평문으로 저장하는 취약점 존재
+        // 사용자 입력 값을 검증하지 않고 그대로 사용하고, 평문 패스워드를 저장하고 있는 취약점 존재
+        if (result.upw === req.body.upw) { 
+            res.send(`FLAG: ${process.env.FLAG}`); // 비밀번호가 일치하면 FLAG 호출
         } else {
             res.send('fail');
         }
@@ -57,3 +58,5 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 ```
+
+NoSQL Injection을 이용하는 문제로 보인다.
