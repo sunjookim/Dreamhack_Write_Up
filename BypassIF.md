@@ -1,6 +1,6 @@
 app.py
 
-```
+```python
 # 취약한 md5 알고리즘으로 해싱되어있다.
 KEY = hashlib.md5(FLAG.encode()).hexdigest()
 guest_key = hashlib.md5(b"guest").hexdigest() # 084e0343a0486ff05530df6c705c8bb4
@@ -54,11 +54,15 @@ def flag():
 
 버프슈트를 통해 key=asdf&cmd_input=ls를 전송해보면 ls 결과가 나타난다. 
 
-
+<hr/>
 
 flag.txt를 열어야 하는데, filter_cmd 함수 때문에 flag 문자열이 차단된다.
 
 알파벳 소문자, 숫자만을 사용해서 플래그 파일의 내용을 읽어야 한다.
 
 도무지 방법이 없어서 소스코드를 다시 봤는데 TimeoutExpired가 발생하면 KEY가 노출되는 부분이 있었다.
+
+<hr/>
+
+5초가 지나면 타임아웃 되므로, sleep 6을 해서 KEY 값을 얻었다.
 
