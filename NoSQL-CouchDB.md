@@ -32,6 +32,7 @@ app.post('/auth', function(req, res) {
             return;
         }
         // 사용자 입력 값을 검증하지 않고 그대로 사용하고, 평문 패스워드를 저장하고 있는 취약점 존재
+        // upw 값은 검사하면서 id 값은 검사하지 않고 있음
         if (result.upw === req.body.upw) { 
             res.send(`FLAG: ${process.env.FLAG}`); // 비밀번호가 일치하면 FLAG 호출
         } else {
@@ -59,4 +60,14 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 ```
 
-NoSQL Injection을 이용하는 문제로 보인다.
+<br/>
+### _all_docs
+CouchDB의 _all_docs는 데이터베이스 내의 모든 문서의 메타데이터(ID, revision 등)를 조회할 수 있는 내장(view) API이다.
+
+id 값을 검사하지 않기 때문에, uid=admin으로 하고 pw를 입력하지 않은 채로 요청하면 undefined 결과가 나온다.
+
+result를 undefined로 하고, 실제로 요청에서도 pw 파라미터 전달을 빼버리면 undefined가 된다.(버프슈트 이용)
+
+이렇게 하여 요청하면 플래그 값을 얻을 수 있다.
+
+
