@@ -60,8 +60,8 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 ```
 
-<br/>
-#### "_all_docs"
+#### _all_docs
+
 CouchDB의 _all_docs는 데이터베이스 내의 모든 문서의 메타데이터(ID, revision 등)를 조회할 수 있는 내장(view) API이다.
 
 id 값을 검사하지 않기 때문에, uid=admin으로 하고 pw를 입력하지 않은 채로 요청하면 undefined 결과가 나온다.
