@@ -48,7 +48,8 @@ check.php
 
 ---
 
-if((int)$input_id == $id && strlen($input_id) === 10) 이 부분을 보면, $input_id를 강제로 int 형변환하고 그것을 $id와 비교하고 있다.
+if((int)$input_id == $id && strlen($input_id) === 10) 이 부분을 보면, $input_id를 강제로 int 형변환하고 그것을 $id와 비교하고 있다.  
+
 PHP는 == 연산자에서 자동으로 타입 변환(type juggling)을 수행하기 때문에 $id도 int 타입으로 변환되어 비교된다.
 
 
