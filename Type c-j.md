@@ -49,7 +49,6 @@ check.php
 ---
 
 if((int)$input_id == $id && strlen($input_id) === 10) 이 부분을 보면, $input_id를 강제로 int 형변환하고 그것을 $id와 비교하고 있다.  
-
 PHP는 == 연산자에서 자동으로 타입 변환(type juggling)을 수행하기 때문에 $id도 int 타입으로 변환되어 비교된다.
 
 <br>
@@ -63,5 +62,19 @@ https://php.365ok.co.kr/migration80.incompatible.php
 위 링크에 따르면 php 7.x.x 버전에서는 42 == "42foo"라고 한다.  
 (php 8.0.x 버전에서는 false)  
 
+<br>
 
+따라서 해시값 356A192B7913B04C54574D18C28D46E6395428AB은 356aasdf와 비교하여 True가 된다.  
+id, pw를 각각 입력하면 플래그를 얻을 수 있다.  
+Try again이 뜨는 경우도 있는데 getRandStr() 생성 시 숫자가 먼저 온 경우이므로 몇 번 더 해보면 플래그가 나온다.  
+
+<br>
+
+---
+
+###Type Confusion 취약점 방지 방법
+1. == 연산자 대신 === 연산자를 사용하여 엄격한 비교를 수행, 자동 형변환 방지(===는 값과 타입을 모두 비교한다)
+2. 타입을 명시적으로 확인하거나, 사용자 입력이 예상한 형식인지 체크
+3. 타입이 엄격한 언어를 사용(ex. Rust, Go)
+4. 타입 안전성 보장하는 라이브러리 사용(ex. PHP의 filter_var())
 
