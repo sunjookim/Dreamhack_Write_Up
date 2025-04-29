@@ -54,8 +54,14 @@ PHP는 == 연산자에서 자동으로 타입 변환(type juggling)을 수행하
 
 <br>
   
-그리고 PHP에서 (int)abcd1234 = 0이고, (int)1234abcd = 1234이다.
+그리고 PHP에서 (int)abcd1234 = 0이고, (int)1234abcd = 1234이다.  
 그래서 getRandStr()로 문자열 생성 시 문자가 먼저 올 확률이 더 크므로 $input_id는 0000000000으로 입력한다.
+
+---
+
+https://php.365ok.co.kr/migration80.incompatible.php  
+위 링크에 따르면 php 7.x.x 버전에서는 42 == "42foo"라고 한다.  
+(php 8.0.x 버전에서는 false)  
 
 
 
