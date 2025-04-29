@@ -66,6 +66,6 @@ int main()
 }
 ```
 
-my_page.name
-my_page.age
-flag_buf
+my_page.name  
+my_page.age  
+flag_buf  
