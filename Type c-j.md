@@ -52,7 +52,7 @@ if((int)$input_id == $id && strlen($input_id) === 10) 이 부분을 보면, $inp
 
 PHP는 == 연산자에서 자동으로 타입 변환(type juggling)을 수행하기 때문에 $id도 int 타입으로 변환되어 비교된다.
 
-
+<br>
   
 그리고 PHP에서 (int)abcd1234 = 0이고, (int)1234abcd = 1234이다.
 그래서 getRandStr()로 문자열 생성 시 문자가 먼저 올 확률이 더 크므로 $input_id는 0000000000으로 입력한다.
