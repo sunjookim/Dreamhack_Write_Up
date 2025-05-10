@@ -55,4 +55,13 @@ int main() {
 예를 들어 AAAA%n과 같이 입력하면 출력된 문자 수(4)를 특정 주소에 저장할 수 있다.  
 → payload = b'a' * 1337 + b'%n'  
 
+<br>
 
+checksec --file=fsb_overwrite
+```shell
+Arch:     amd64-64-little
+RELRO:    Full RELRO
+Stack:    No canary found
+NX:       NX enabled
+PIE:      PIE enabled
+```
